@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.TrayIcon.MessageType;
 
+
 public class TrayIconDemo {
 
     public static void main(String[] args) throws AWTException {
@@ -8,26 +9,33 @@ public class TrayIconDemo {
             TrayIconDemo td = new TrayIconDemo();
             td.displayTray();
         } else {
-            System.err.println("System tray not supported!");
+            System.err.println("Il Sistema non supporta questa funzione Codice Errore 101");
         }
-    }
+    } // Caso che il sistema non supporti il tutto
 
     public void displayTray() throws AWTException {
         //Obtain only one instance of the SystemTray object
         SystemTray tray = SystemTray.getSystemTray();
 
         //If the icon is a file
-        Image image = Toolkit.getDefaultToolkit().createImage("icon.png");
-        //Alternative (if the icon is on the classpath):
-        //Image image = Toolkit.getDefaultToolkit().createImage(getClass().getResource("icon.png"));
 
-        TrayIcon trayIcon = new TrayIcon(image, "Tray Demo");
+        Image image = Toolkit.getDefaultToolkit().createImage("C:/Users/anton/Desktop/Code/Java/Testing/Grafo2.png"); //Immagine App
+        
+        
+        //Alternative (if the icon is on the classpath):
+        //Image image = Toolkit.getDefaultToolkit().createImage(getClass().getResource("C:/Users/anton/Desktop/Code/Java/Testing/Grafo2.png"));
+
+        TrayIcon trayIcon = new TrayIcon(image, "Timer Cronometro");
+        
+        
         //Let the system resize the image if needed
         trayIcon.setImageAutoSize(true);
+       
         //Set tooltip text for the tray icon
-        trayIcon.setToolTip("System tray icon demo");
+        //trayIcon.setToolTip("Cronometro");
+       
         tray.add(trayIcon);
 
-        trayIcon.displayMessage("Hello, World", "notification demo", MessageType.INFO);
+        trayIcon.displayMessage("Timer Cronometro", "Allarme Timer", MessageType.WARNING);
     }
 }
