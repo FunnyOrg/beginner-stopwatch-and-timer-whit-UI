@@ -15,7 +15,7 @@ public class Cronometro {
 	
 	//Set all methods:
 	
-	public void start() {
+	public void start() { //NO VOID MA INT PER RITORNARE VALORI PER IL METODO PAUSE (TRAMITE OGGETTO)
 	
 		// When the hour will be 60, the watch will stop himself giving a text massage to user
 		while(this.hour < 60) {
@@ -59,7 +59,7 @@ public class Cronometro {
 		
 	}
 	
-	public void pause() {
+	public void pause() { //POSSIAMO PASSARE UN'OGGETTO CHE HA I TRE ATTRIBUTI PRINCIPALI
 		
 		
 		
