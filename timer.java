@@ -1,11 +1,13 @@
+import java.awt.*;                      // Messagio di Notifica Windows
+import java.awt.TrayIcon.MessageType;
+
+
 public class timer extends Cronometro {
     
 //Attribute extends by Cronometro 
 
  public timer() { 
-
     super(); 
-
  }
 
 
@@ -44,11 +46,31 @@ public void setAllarm(int ora, int minutes, int seconds) {
         
 
     } 
-    
+
+    try {
+        this.AlarmNotf();
+    } catch (AWTException Errore) {
+        Errore.printStackTrace();
+    }
+
+    }
+
+    public void AlarmNotf() throws AWTException {
+
+        SystemTray tray = SystemTray.getSystemTray(); 
+
+        Image image = Toolkit.getDefaultToolkit().createImage("resource/Immagine.png");
+        TrayIcon trayIcon = new TrayIcon(image, "Timer Cronometro");
+        trayIcon.setImageAutoSize(true);
+        tray.add(trayIcon);
+        trayIcon.displayMessage("Timer Finito", "Il TIMER E ARRIVATO ALLA FINE", MessageType.WARNING);
+
+    }
+
+
 }
 
 
 
-}
 
 
