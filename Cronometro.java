@@ -1,12 +1,18 @@
+import java.awt.*;
+import java.awt.TrayIcon.MessageType;
+
 
 public class Cronometro {
 	
 	int hour;
 	int minutes;
 	int seconds;
+	String str; 
 	
+
 	public Cronometro() {
 		
+		this.str = ""; 
 		this.hour = 0;
 		this.minutes = 0;
 		this.seconds = 0;
@@ -15,8 +21,8 @@ public class Cronometro {
 	
 	//Set all methods:
 	
-	public void start() { //NO VOID MA INT PER RITORNARE VALORI PER IL METODO PAUSE (TRAMITE OGGETTO)
-	
+	public String start() { 
+		 
 		// When the hour will be 60, the watch will stop himself giving a text massage to user
 		while(this.hour < 60) {
 			
@@ -29,7 +35,7 @@ public class Cronometro {
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
 				} else {
@@ -40,14 +46,13 @@ public class Cronometro {
 				this.hour++;
 			}
 		}
-		
+		this.str = this.hour+":"+this.minutes+":"+this.seconds; 
+		return str; 
 	}
 	
 	public void reset() {
 		
-		this.hour = 0;
-		this.minutes = 0;
-		this.seconds = 0;
+		this.stop();
 		
 	}
 	
@@ -59,8 +64,9 @@ public class Cronometro {
 		
 	}
 	
-	public void pause() { //POSSIAMO PASSARE UN'OGGETTO CHE HA I TRE ATTRIBUTI PRINCIPALI
-		
+	public void pause() { 	               //Metodo Start Avviato per chiamata
+						    		     //POSSIAMO PASSARE UN'OGGETTO CHE HA I TRE ATTRIBUTI PRINCIPALI
+		System.out.println(this.str);
 		
 		
 	}
