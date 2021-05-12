@@ -40,11 +40,15 @@ public class Cronometro {
 					}
 				} else {
 					this.minutes++;
+					this.seconds = 0; 
 				}
 				
 			} else {
 				this.hour++;
+				this.minutes = 0; 
+				this.seconds = 0;
 			}
+			System.out.println(this.hour + ":" + this.minutes + ":" + this.seconds);
 		}
 		this.str = this.hour+":"+this.minutes+":"+this.seconds; 
 		return str; 
