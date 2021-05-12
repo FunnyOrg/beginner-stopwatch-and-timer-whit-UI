@@ -2,26 +2,26 @@ import java.awt.*;                      // Messagio di Notifica Windows
 import java.awt.TrayIcon.MessageType;
 
 
-public class timer extends Cronometro {
+public class Timer extends Cronometro {
     
 //Attribute extends by Cronometro 
 
- public timer() { 
+ public Timer() { 
     super(); 
  }
 
 
 
 //Method 
-public void setAllarm(int ora, int minutes, int seconds) { 
+public void setAllarm(int hour, int minutes, int seconds) { 
 
     int max = 59; 
 
-    this.hour = ora; 
+    this.hour = hour; 
     this.minutes = minutes; 
     this.seconds = seconds; 
 
-    while(this.hour != 0 && this.minutes != 0 && this.seconds != 0) { 
+    while(this.hour != 0 || this.minutes != 0 || this.seconds != 0) { 
 
         if(this.seconds > 0) {
             
@@ -44,6 +44,31 @@ public void setAllarm(int ora, int minutes, int seconds) {
             this.seconds = max; 
         }
         
+        if(this.hour < 10 && this.minutes < 10 && this.seconds < 10) {
+            System.out.println("0" + this.hour + ":0" + this.minutes + ":0" + this.seconds);
+            
+        } else if(this.hour < 10 && this.minutes < 10) {
+            System.out.println("0" + this.hour + ":0" + this.minutes + ":" + this.seconds);
+
+        } else if(this.hour < 10) {
+            System.out.println("0" + this.hour + ":" + this.minutes + ":" + this.seconds);
+
+        } else if(this.minutes < 10 && this.seconds < 10) {
+            System.out.println(this.hour + ":0" + this.minutes + ":0" + this.seconds);
+
+        } else if(this.minutes < 10) {
+            System.out.println(this.hour + ":0" + this.minutes + ":" + this.seconds);
+
+        } else if(this.seconds < 10) {
+            System.out.println(this.hour + ":" + this.minutes + ":0" + this.seconds);
+
+        } else if(this.hour < 10 && this.seconds < 10) {
+            System.out.println("0" + this.hour + ":" + this.minutes + ":0" + this.seconds);
+
+        } else {
+            System.out.println(this.hour + ":" + this.minutes + ":" + this.seconds);
+
+        }
 
     } 
 
@@ -69,8 +94,3 @@ public void setAllarm(int ora, int minutes, int seconds) {
 
 
 }
-
-
-
-
-
