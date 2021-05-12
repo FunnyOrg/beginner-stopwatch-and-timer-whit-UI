@@ -1,7 +1,3 @@
-import java.awt.*;
-import java.awt.TrayIcon.MessageType;
-
-
 public class Cronometro {
 	
 	int hour;
@@ -48,7 +44,33 @@ public class Cronometro {
 				this.minutes = 0; 
 				this.seconds = 0;
 			}
-			System.out.println(this.hour + ":" + this.minutes + ":" + this.seconds);
+
+			if(this.hour < 10 && this.minutes < 10 && this.seconds < 10) {
+				System.out.println("0" + this.hour + ":0" + this.minutes + ":0" + this.seconds);
+				
+			} else if(this.hour < 10 && this.minutes < 10) {
+				System.out.println("0" + this.hour + ":0" + this.minutes + ":" + this.seconds);
+
+			} else if(this.hour < 10) {
+				System.out.println("0" + this.hour + ":" + this.minutes + ":" + this.seconds);
+
+			} else if(this.minutes < 10 && this.seconds < 10) {
+				System.out.println(this.hour + ":0" + this.minutes + ":0" + this.seconds);
+
+			} else if(this.minutes < 10) {
+				System.out.println(this.hour + ":0" + this.minutes + ":" + this.seconds);
+
+			} else if(this.seconds < 10) {
+				System.out.println(this.hour + ":" + this.minutes + ":0" + this.seconds);
+
+			} else if(this.hour < 10 && this.seconds < 10) {
+				System.out.println("0" + this.hour + ":" + this.minutes + ":0" + this.seconds);
+
+			} else {
+				System.out.println(this.hour + ":" + this.minutes + ":" + this.seconds);
+
+			}
+
 		}
 		this.str = this.hour+":"+this.minutes+":"+this.seconds; 
 		return str; 
