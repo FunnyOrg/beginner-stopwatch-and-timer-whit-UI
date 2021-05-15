@@ -1,3 +1,5 @@
+package asset;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -31,7 +33,7 @@ public class Stopwatch implements ActionListener{
    stringa_secondi = String.format("%02d", Secondi);
    stringa_minuti  = String.format("%02d", Minuti);
    stringa_ora    = String.format("%02d", Ore);
-   label.setText(stringa_ora + ":" +stringa_minuti + ":" + stringa_secondi);
+   label.setText("  "+stringa_ora + ":" +stringa_minuti + ":" + stringa_secondi);
    
   }
   
@@ -41,7 +43,7 @@ public class Stopwatch implements ActionListener{
  
  Stopwatch(){
   
-      label = new JLabel(stringa_ora + ":" +stringa_minuti + ":" + stringa_secondi);
+      label = new JLabel("  "+stringa_ora + ":" +stringa_minuti + ":" + stringa_secondi);
       label.setBounds(93, 60, 100, 30);
       label.setFont(new Font("Verdana", Font.PLAIN, 15));
       label.setEnabled(true);
@@ -66,7 +68,7 @@ public class Stopwatch implements ActionListener{
         window.getContentPane().setBackground(Color.GRAY);
         window.setLayout(null);  
         window.pack();
-        window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         window.setSize(300,300);
         window.setResizable(false);
         window.setVisible(true);
@@ -115,7 +117,7 @@ public class Stopwatch implements ActionListener{
   stringa_secondi= String.format("%02d", Secondi);
   stringa_minuti = String.format("%02d", Minuti);
   stringa_ora = String.format("%02d", Ore);       
-  label.setText(stringa_ora + ":" +stringa_minuti + ":" + stringa_secondi);
+  label.setText("  "+stringa_ora + ":" +stringa_minuti + ":" + stringa_secondi);
  }
 
 }
