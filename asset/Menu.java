@@ -1,10 +1,14 @@
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.WindowConstants;
 
-public class Menu extends JFrame {
-  
+public class Menu {
 
     JFrame finestra = new JFrame("Menu"); 
     JButton t = new JButton("Timer");
@@ -13,9 +17,6 @@ public class Menu extends JFrame {
     Font font = new Font("Verdana", Font.PLAIN, 15);
 
     public Menu() {
-      Stopwatch st = new Stopwatch();
-      TimerGUI tg = new TimerGUI();
-
       
      //label.setBounds(93, 60, 100, 30);
      //label.setFont(font);
@@ -28,11 +29,34 @@ public class Menu extends JFrame {
         t.setFont(font);
         t.setFocusable(false);
 
+        t.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				@SuppressWarnings("unused")
+				TimerGUI tg = new TimerGUI();
+			}
+        	
+        	
+        	
+        });
         
         c.setBounds(40, 130, 200, 100);
         c.setFont(font);
         c.setFocusable(false);
         
+        c.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				@SuppressWarnings("unused")
+				Stopwatch st = new Stopwatch();
+			}
+        	
+        	
+        });
         
         finestra.add(t);
         finestra.add(c);
@@ -41,7 +65,7 @@ public class Menu extends JFrame {
        finestra.getContentPane().setBackground(Color.GRAY);
        finestra.setLayout(null);  
        finestra.pack();
-       finestra.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+       finestra.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
        finestra.setSize(300,300);
        finestra.setResizable(false);
        finestra.setVisible(true);
