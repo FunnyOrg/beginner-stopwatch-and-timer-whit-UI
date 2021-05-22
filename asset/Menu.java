@@ -1,3 +1,5 @@
+package asset;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -8,16 +10,25 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
-public class Menu {
+public class Menu extends JFrame{
 
-    JFrame finestra = new JFrame("Menu"); 
+    
     JButton t = new JButton("Timer");
     JButton c = new JButton("Cronometro");
     JLabel label = new JLabel();
     Font font = new Font("Verdana", Font.PLAIN, 15);
 
     public Menu() {
+    	
+    	super("Menu");
       
+    	setLayout(null);
+		setSize(300, 300);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setBackground(Color.RED);
+		setResizable(false);
+		
      //label.setBounds(93, 60, 100, 30);
      //label.setFont(font);
      //label.setEnabled(true);
@@ -58,16 +69,11 @@ public class Menu {
         	
         });
         
-        finestra.add(t);
-        finestra.add(c);
-        finestra.add(label);
+        add(t);
+        add(c);
+        add(label);
+        setVisible(true);
 
-       finestra.getContentPane().setBackground(Color.GRAY);
-       finestra.setLayout(null);  
-       finestra.pack();
-       finestra.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-       finestra.setSize(300,300);
-       finestra.setResizable(false);
-       finestra.setVisible(true);
+     
     }
 }
