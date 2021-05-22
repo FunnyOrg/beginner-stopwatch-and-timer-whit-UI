@@ -1,3 +1,5 @@
+package asset;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -114,11 +116,21 @@ public class TimerGUI extends JFrame{
 				int minuti;
 				int secondi;
 				
-				
+				if (textOre.getText().equals("")) {
+					textOre.setText("00");
+				}
 				ore = Integer.parseInt(textOre.getText());
 				textOre.setText(numberToWord(ore));
+				
+				if (textMinuti.getText().equals("")) {
+					textMinuti.setText("00");
+				}
 				minuti = Integer.parseInt(textMinuti.getText());
 				textMinuti.setText(numberToWord(minuti));
+				
+				if (textSecondi.getText().equals("")) {
+					textSecondi.setText("00");
+				}
 				secondi = Integer.parseInt(textSecondi.getText());
 				textSecondi.setText(numberToWord(secondi));
 				
