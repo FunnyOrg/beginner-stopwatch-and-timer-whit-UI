@@ -1,108 +1,150 @@
-import javax.swing.JLabel;
-import javax.swing.Timer;
-import javax.swing.JFrame;
-
-
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
-public class TimerClock {
 
-	JLabel labelTimer = new JLabel();
-	JFrame frame = new JFrame("Timer");
-	public boolean fine = false;
-	private int ore;
-	private int minuti;
-	private int secondi;
-	String str_ore;
-	String str_minuti;
-	String str_secondi;
-	Timer timer;
+@SuppressWarnings("serial")
+public class TimerGUI extends JFrame{
 	
-	TimerClock(JLabel label) {
+	boolean started = false;
+
+	JTextField textOre = new JTextField(2);
+	JTextField textMinuti = new JTextField(2);
+	JTextField textSecondi = new JTextField(2);
+	JLabel labelOre = new JLabel();
+	JLabel labelMinuti = new JLabel();
+	JLabel labelSecondi = new JLabel();
+	JButton start = new JButton("Start");
+	JButton end= new JButton("Reset");
+	JButton setTimer = new JButton("Set timer");
+	JLabel label = new JLabel();
+	TimerClock t = new TimerClock(label);
+	
+	TimerGUI() {
 		
-		labelTimer = label;
-		this.ore = 0;
-		this.minuti = 0;
-		this.secondi = 0;
-		str_ore = String.format("%02d", getOre());
-		str_minuti = String.format("%02d", getMinuti());
-		str_secondi = String.format("%02d", getSecondi());
+		super("TimerClock");
 		
-		timer = new Timer(1000, new ActionListener() {
+		label.setText("Tempo rimasto:  "+ t.str_ore + ":" + t.str_minuti + ":" + t.str_secondi);
+		setLayout(null);
+		setSize(300, 300);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+		setBackground(Color.RED);
+		setResizable(false);
+		
+		
+		 
+		label.setBounds(65, 100, 150, 30);
+		label.setBackground(Color.white);
+		label.setEnabled(true);
+		label.setOpaque(true);
+		
+		labelOre.setText("Ore");
+		labelOre.setBounds(40, 200, 60, 30);
+		labelOre.setEnabled(true);
+		labelOre.setOpaque(true);
+		
+		labelMinuti.setText("Minuti");
+		labelMinuti.setBounds(110, 200, 80, 30);
+		labelMinuti.setEnabled(true);
+		labelMinuti.setOpaque(true);
+		
+		labelSecondi.setText("Secondi");
+		labelSecondi.setBounds(190, 200, 80, 30);
+		labelSecondi.setEnabled(true);
+		labelSecondi.setOpaque(true);
+		
+		textOre.setBounds(70, 205, 20, 20);
+		add(textOre);
+		
+		textMinuti.setBounds(150, 205, 20, 20);
+		add(textMinuti);
+		
+		textSecondi.setBounds(240, 205, 20, 20);
+		add(textSecondi);
+		
+		start.setBounds(35, 150, 100, 30);
+		end.setBounds(150, 150, 100, 30);
+		setTimer.setBounds(90, 40, 100, 30);
+		
+		add(start);
+		add(end);
+		add(setTimer);
+	    
+		add(labelOre);
+		add(labelMinuti);
+		add(labelSecondi);
+		add(label);
+		setVisible(true);
+		
+		start.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-					
-					if (getSecondi() > 0) {
-						setSecondi(getSecondi()-1);
-					} else if (getMinuti() > 0) {
-						setMinuti(getMinuti()-1);
-						setSecondi(59);
-					} else if (getOre() > 0) {
-						setOre(getOre()-1);
-						setMinuti(59);
-						setSecondi(59);
-					} else {
-						timer.stop();
-					}
-					
-					str_ore = String.format("%02d", getOre());
-					str_minuti = String.format("%02d", getMinuti());
-					str_secondi = String.format("%02d", getSecondi());
-					
-					labelTimer.setText("Tempo rimasto:  "+ str_ore + ":" + str_minuti + ":" + str_secondi);
-					System.out.println("  "+ str_ore + ":" + str_minuti + ":" + str_secondi);
+				
+				if (!started) {
+					started = true;
+					start.setText("Stop");
+					t.avvia();
+				} else {
+					started = false;
+					start.setText("Start");
+					t.fermo();
+				}
+				
+			}
+			
+		});
+		
+		end.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				t.reset();
+				start.setText("Start");
+				
+			}
+			
+		});
+		
+		setTimer.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				int ore;
+				int minuti;
+				int secondi;
 				
 				
-			}	
+				ore = Integer.parseInt(textOre.getText());
+				textOre.setText(numberToWord(ore));
+				minuti = Integer.parseInt(textMinuti.getText());
+				textMinuti.setText(numberToWord(minuti));
+				secondi = Integer.parseInt(textSecondi.getText());
+				textSecondi.setText(numberToWord(secondi));
+				
+				t.setOre(ore);
+				t.setMinuti(minuti);
+				t.setSecondi(secondi);
+				
+				String strO = String.format("%02d", ore);
+				String strM = String.format("%02d", minuti);
+				String strS = String.format("%02d", secondi);
+				
+				label.setText("Tempo rimasto:  "+ strO + ":" + strM + ":" + strS);
+				System.out.println("  "+ strO + ":" + strM + ":" + strS);
+				
+				if (strO == "00" && strM == "00"  && strS == "00") {
+					start.setText("Start");
+				}
+			}
+
+			private String numberToWord(int minuti) {
+				// TODO Auto-generated method stub
+				return null;
+			}
+			
 		});
 		
 	}
 	
-	public void avvia() {
-		timer.start();
-	}
-	
-	public void fermo() {
-		timer.stop();
-	}
-	
-	public void reset() {
-		timer.stop();
-		setOre(0);
-		setMinuti(0);
-		setSecondi(0);
-		str_ore = String.format("%02d", getOre());
-		str_minuti = String.format("%02d", getMinuti());
-		str_secondi = String.format("%02d", getSecondi());
-		labelTimer.setText("Tempo rimasto:  "+ str_ore + ":" + str_minuti + ":" + str_secondi);
-		System.out.println("  "+ str_ore + ":" + str_minuti + ":" + str_secondi);
-	}
-	
-	public void setOre(int ore) {
-		this.ore = ore;
-	}
-	
-	public int getOre() {
-		return ore;
-	}
-	
-	public void setMinuti(int minuti) {
-		this.minuti = minuti;
-	}
-	
-	public int getMinuti() {
-		return minuti;
-	}
-	
-	public void setSecondi(int secondi) {
-		this.secondi = secondi;
-	}
-	
-	public int getSecondi() {
-		return secondi;
-	}
-	
 }
-
