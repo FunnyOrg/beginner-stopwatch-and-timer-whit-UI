@@ -2,13 +2,12 @@ import javax.swing.JLabel;
 import javax.swing.Timer;
 import javax.swing.JFrame;
 
-
-import java.awt.*;
+import java.awt.AWTException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TimerClock {
-
+	TrayIconDemo notifica = new TrayIconDemo(); 
 	JLabel labelTimer = new JLabel();
 	JFrame frame = new JFrame("Timer");
 	public boolean fine = false;
@@ -44,7 +43,13 @@ public class TimerClock {
 						setMinuti(59);
 						setSecondi(59);
 					} else {
+
 						timer.stop();
+						try {
+							notifica.displayTray();
+						} catch (AWTException Eccezione) {
+							Eccezione.printStackTrace();
+						}
 					}
 					
 					str_ore = String.format("%02d", getOre());
@@ -105,3 +110,4 @@ public class TimerClock {
 	}
 	
 }
+
