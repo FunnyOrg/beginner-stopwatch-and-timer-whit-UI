@@ -1,4 +1,4 @@
-package asset;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,7 +29,7 @@ public class TimerGUI extends JFrame{
 		label.setText("Tempo rimasto:  "+ t.str_ore + ":" + t.str_minuti + ":" + t.str_secondi);
 		setLayout(null);
 		setSize(300, 300);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setBackground(Color.RED);
 		setResizable(false);
@@ -160,3 +160,4 @@ public class TimerGUI extends JFrame{
 	}
 	
 }
+
