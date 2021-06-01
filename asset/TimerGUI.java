@@ -31,12 +31,12 @@ public class TimerGUI extends JFrame{
 		setSize(300, 300);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
-		setBackground(Color.RED);
+		getContentPane().setBackground(Color.GRAY);
 		setResizable(false);
 		
 		
 		 
-		label.setBounds(65, 100, 150, 30);
+		label.setBounds(65, 40, 150, 30);
 		label.setBackground(Color.white);
 		label.setEnabled(true);
 		label.setOpaque(true);
@@ -45,17 +45,20 @@ public class TimerGUI extends JFrame{
 		labelOre.setBounds(40, 200, 60, 30);
 		labelOre.setEnabled(true);
 		labelOre.setOpaque(true);
-		
+		labelOre.setBackground(Color.GRAY);
+
 		labelMinuti.setText("Minuti");
 		labelMinuti.setBounds(110, 200, 80, 30);
 		labelMinuti.setEnabled(true);
 		labelMinuti.setOpaque(true);
-		
+		labelMinuti.setBackground(Color.GRAY);
+
 		labelSecondi.setText("Secondi");
 		labelSecondi.setBounds(190, 200, 80, 30);
 		labelSecondi.setEnabled(true);
 		labelSecondi.setOpaque(true);
-		
+		labelSecondi.setBackground(Color.GRAY);
+
 		textOre.setBounds(70, 205, 20, 20);
 		add(textOre);
 		
@@ -65,9 +68,9 @@ public class TimerGUI extends JFrame{
 		textSecondi.setBounds(240, 205, 20, 20);
 		add(textSecondi);
 		
-		start.setBounds(35, 150, 100, 30);
-		end.setBounds(150, 150, 100, 30);
-		setTimer.setBounds(90, 40, 100, 30);
+		start.setBounds(35, 100, 100, 30);
+		end.setBounds(150, 100, 100, 30);
+		setTimer.setBounds(95, 150, 100, 30);
 		
 		add(start);
 		add(end);
@@ -160,4 +163,3 @@ public class TimerGUI extends JFrame{
 	}
 	
 }
-
