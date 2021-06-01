@@ -23,6 +23,7 @@ public class Menu extends JFrame{
         
      
     	setLayout(null);
+        getContentPane().setBackground(Color.GRAY);
 		setSize(300, 300);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
 		setLocationRelativeTo(null);
@@ -71,4 +72,3 @@ public class Menu extends JFrame{
 
    
 }
-
